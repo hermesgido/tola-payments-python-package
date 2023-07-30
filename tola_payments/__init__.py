@@ -38,21 +38,18 @@ class TolaPayements:
             "currency" :"TZS",
 
         }
-     
-        
         if mno_name == "Vodacom":
             payload["target"] = self.__voda_target
             payload["channel"] = "TANZANIA.VODACOM"
         elif mno_name == "Tigo":
             payload["target"] = self.__tigo_target
-            payload["channel"] = "TANZANIA.AIRTEL"
+            payload["channel"] = "TANZANIA.TIGO"
         elif mno_name == "Airtel":
             payload["target"] = self.__airtel_target
             payload["channel"] = "TANZANIA.AIRTEL"
         else:
            pass
         ##print(payload)
-       
         
         auth_credentials = (self.__username, self.__password)
         headers = { "Authorization": "Basic " + base64.b64encode(f"{auth_credentials[0]}:{auth_credentials[1]}".encode('utf-8')).decode('utf-8'), "Content-Type": "application/json"}
@@ -61,6 +58,4 @@ class TolaPayements:
             return resp
         except:
             return "Number Not allowed"
-
-
 
